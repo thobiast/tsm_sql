@@ -6,6 +6,7 @@ Thobias Salazar Trevisan
 :toc: macro
 :!toc-title:
 :sectnums:
+:source-highlighter: rouge
 
 *Useful SQL Statements for TSM*
 
