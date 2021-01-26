@@ -362,15 +362,17 @@ SERVER-04                  5191.91              310516
 [source,sql]
 ----
 - TSM version 5 and 6
-tsm: SERVER1> SELECT node_name,CAST(FLOAT(SUM(logical_mb)) / 1024 AS DEC(8,2)) FROM -
-occupancy GROUP BY node_name
+tsm: SERVER1> SELECT node_name, -
+CAST(FLOAT(SUM(logical_mb)) / 1024 AS DEC(10,2)) as LOGICAL_GB, -
+CAST(FLOAT(SUM(reporting_mb)) / 1024 AS DEC(10,2)) as REPORTING_GB -
+FROM occupancy WHERE node_name<>'' GROUP BY node_name
 
-NODE_NAME              Unnamed[2]
-------------------     ----------
-SERVER-01                  364.01
-SERVER-02                  227.52
-SERVER 03                 8338.89
-SERVER-04                 3341.81
+NODE_NAME               LOGICAL_GB      REPORTING_GB
+----------------     -------------     -------------
+SERVER-01                 12260.29          12260.29
+SERVER-02                 12192.98          12192.98
+SERVER-03                  1012.44           1012.42
+SERVER-04                   988.74            988.72
 ...
 ----
 
